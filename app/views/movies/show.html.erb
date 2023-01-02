@@ -1,0 +1,15 @@
+<h1><%= @movie.title %></h1>
+<p>Year: <%= @movie.creation_year %></p>
+<p>Genre: <%= @movie.genre %></p>
+<div id="actors">
+<h3>Actors:</h3>
+<% @actors.each do |actor| %>
+  <p><%= actor.name %></p>
+<% end %>
+</div>
+
+<%= form_with url: "/movies/#{@movie.id}", method: :post do |form| %>
+  <%= form.label :actor_id, "Add an actor:" %>
+  <%= form.number_field :actor_id %>
+  <%= form.submit "Submit" %>
+<% end %>
